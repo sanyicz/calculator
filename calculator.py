@@ -39,7 +39,7 @@ class Calculator(tk.Frame): #class inheritance
             if self.result == '':
                 self.expression = 'Invalid operation.'
             else:
-                self.expression += '=' + str(self.result)
+                self.expression += self.symbol + str(self.result)
         self.entryVar.set(self.expression)
 
     def evaluateExpression(self, expression):
@@ -53,14 +53,15 @@ class Calculator(tk.Frame): #class inheritance
                 b += symbol
             elif symbol in '+-*/':
                 operation = symbol
-        #print(expression)
-        #print(a, b, operation, sep=', ')
+        print(expression)
+        print(a, operation, b, sep=', ')
         if expression == str(a) + operation + str(b) and expression not in  ' +-*/' and b != '':
             #used as intented
             if a != '':
                 a = int(a)
             if b != '':
                 b = int(b)
+
             if operation == '+':
                 result = a + b
             elif operation == '-':
@@ -68,10 +69,15 @@ class Calculator(tk.Frame): #class inheritance
             elif operation == '*':
                 result = a * b
             elif operation == '/':
-                result = a / b
+                if b != 0:
+                    result = a / b
+                else:
+                    result = ''
             else:
                 result = a
             #print(a, b, operation, result, sep=', ')
+        elif expression == str(a) + operation + str(b) and expression not in  ' +-*/' and b == '':
+            result = a
         else:
             #tried an invalid operation
             result = ''
