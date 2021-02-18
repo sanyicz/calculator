@@ -53,10 +53,9 @@ class Calculator(tk.Frame): #class inheritance
                 b += symbol
             elif symbol in '+-*/':
                 operation = symbol
-                b = ''
         #print(expression)
         #print(a, b, operation, sep=', ')
-        if expression == str(a) + operation + str(b) and expression not in  ' +-*/':
+        if expression == str(a) + operation + str(b) and expression not in  ' +-*/' and b != '':
             #used as intented
             if a != '':
                 a = int(a)
