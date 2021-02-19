@@ -5,15 +5,16 @@ class Calculator(tk.Frame): #class inheritance
         tk.Frame.__init__(self, parentWindow) #?
         self.mainWindow = parentWindow #?
         self.mainWindow.title('Calculator')
-        self.font = ('Helvetica 30 bold')
+        self.font = ('Helvetica 20 bold')
         self.entryVar = tk.StringVar()
-        self.entry = tk.Entry(self.mainWindow, width=19, font=self.font, textvariable=self.entryVar)
+        entryWidth, buttonWidth = 20, 4
+        self.entry = tk.Entry(self.mainWindow, width=entryWidth, font=self.font, textvariable=self.entryVar)
         self.entry.grid(row=0, column=0, columnspan=4)
         self.buttons = []
         self.symbols = [[7, 8, 9, '+'], [4, 5, 6, '-'], [1, 2, 3, '*'], ['C', 0, '=', '/']]
         for i in range(0, len(self.symbols)):
             for j in range(0, len(self.symbols[i])):
-                button = tk.Button(self.mainWindow, text=str(self.symbols[i][j]), width=4, height=2, font=self.font, command=lambda x=i, y=j: self.getSymbol(x, y))
+                button = tk.Button(self.mainWindow, text=str(self.symbols[i][j]), width=buttonWidth, height=2, font=self.font, command=lambda x=i, y=j: self.getSymbol(x, y))
                 button.grid(row=i+1, column=j)
                 self.buttons.append(button)
         self.expression = ''
@@ -88,4 +89,4 @@ if __name__ == '__main__':
     root = tk.Tk()
     Calculator = Calculator(root)
     Calculator.grid(row=0, column=0)
-    root.mainloop
+    root.mainloop()
