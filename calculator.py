@@ -48,11 +48,13 @@ class Calculator(tk.Frame): #class inheritance
         a, b = '', ''
         operation = ''
         for symbol in expression:
-            if symbol in '0123456789' and operation == '':
+            if symbol in '+-' and a == '':
+                a += symbol
+            elif symbol in '0123456789' and operation == '':
                 a += symbol
             elif symbol in '0123456789':
                 b += symbol
-            elif symbol in '+-*/':
+            elif symbol in '+-*/' and a != '':
                 operation = symbol
         #print(expression)
         #print(a, operation, b, sep=', ')
