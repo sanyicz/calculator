@@ -64,12 +64,18 @@ class Calculator(tk.Frame): #class inheritance
                 b = int(b)
 
             if operation == '+':
-                result = a + b
+                if a != '':
+                    result = a + b
+                else:
+                    result = +b
             elif operation == '-':
-                result = a - b
-            elif operation == '*':
+                if a != '':
+                    result = a - b
+                else:
+                    result = -b
+            elif operation == '*' and a != '':
                 result = a * b
-            elif operation == '/':
+            elif operation == '/' and a != '':
                 if b != 0:
                     result = a / b
                 else:
